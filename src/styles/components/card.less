@@ -1,0 +1,47 @@
+.card {
+    border: none;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.card > a:hover {
+    text-decoration: none;
+}
+
+.card-title {
+    transition: color 0.3s ease-in;
+}
+
+.card:hover .card-title {
+    color: rgba(33, 150, 243, 1);
+}
+
+.card-img-overlay {
+    background: linear-gradient(rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7));
+}
+
+@media (min-width: 576px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-columns {
+        column-count: 2;
+        column-gap: 1.25rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-columns {
+        column-count: 2;
+        column-gap: 1.25rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-columns {
+        column-count: 3;
+        column-gap: 1.25rem;
+    }
+}
