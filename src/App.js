@@ -6,14 +6,19 @@ import './App.less'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import { routes } from './routes'
+import LoadingProvider from './providers/LoadingProvider'
+import Spinner from './components/Spinner'
 
 function App () {
   return (
     <Container fluid>
       <BrowserRouter>
-        <Header name="main-header"/>
-        {renderRoutes(routes)}
-        <Footer />
+        <LoadingProvider>
+          <Spinner />
+          <Header name="main-header"/>
+          {renderRoutes(routes)}
+          <Footer />
+        </LoadingProvider>
       </BrowserRouter>
     </Container>
   )

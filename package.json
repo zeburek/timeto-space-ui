@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "babel-plugin-import": "^1.12.2",
     "customize-cra": "^0.8.0",
     "eslint": "^6.6.0",
@@ -16,6 +17,7 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.2.0",
+    "react-spinners": "^0.6.1",
     "react-truncate": "^2.4.0",
     "reactstrap": "^8.1.1",
     "trianglify": "^2.0.0"

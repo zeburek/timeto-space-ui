@@ -1,12 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Truncate from 'react-truncate'
 import { Card, CardImg, CardBody, CardText, CardTitle } from 'reactstrap'
 import Trianglify from 'trianglify'
-import { randomChoice } from '../../utils'
+import { randomChoice } from '../../utils/random'
+import { extractCategory, extractImage } from '../../utils/extracters'
 
-const RandomCard = ({ id, img, title, date, views, author, description }) => {
-  img = img || Trianglify().png()
+const RandomCard = ({ id, title, date, excerpt, _embedded }) => {
+  const medias = extractImage(_embedded)
+  const img = medias.source || Trianglify().png()
+  const regex = /(<([^>]+)>)/ig
+  excerpt = excerpt.rendered.replace(regex, '')
+  title = title.rendered.replace(regex, '')
+  const category = extractCategory(_embedded)
+
+  console.log(category)
+
+  const information = [
+    new Date(date).toLocaleDateString(),
+    _embedded.author[0].name
+  ]
+
+  information.push(category.name)
 
   const renderContent = () => {
     return (
@@ -14,13 +28,11 @@ const RandomCard = ({ id, img, title, date, views, author, description }) => {
         <CardTitle>{title}</CardTitle>
         <CardText>
           <small className="text-muted">
-            {date} | {views} просмотр(ов) | {author}
+            {information.join(' | ')}
           </small>
         </CardText>
 
-        <Truncate lines={2} ellipsis={'...'}>
-          <CardText>{description}</CardText>
-        </Truncate>
+        <CardText>{excerpt}</CardText>
       </>
     )
   }
